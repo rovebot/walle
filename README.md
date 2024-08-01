@@ -1,4 +1,4 @@
-# RoboThink: Embodied Large Multi-modal Model with Self-Constraints
+# WALLE: An Embodied Multimodal Large Language Model with Self-Constraint Perception
 
 ## 1. Release
 
@@ -26,9 +26,16 @@ pip install flash-attn --no-build-isolation
 
 ### 3.1 Stage1
 
-1. data prepare
-   the pretrain stage annotation file follow the `pain` format like:
+### 3.2 Stage2
 
+### 3.3 Stage3
+
+### 3.4 Stage4
+
+
+## 4. Finetune
+
+Data formal:
 ```python
 [
     {
@@ -48,70 +55,6 @@ pip install flash-attn --no-build-isolation
     ...
 ]
 ```
-
-2. modify train_stage1.sh
-   modify the pretrain bash file: `./scripts/train/train_stage1.sh`:
-
-```python
-STAGE1_TRAIN_ANNOTATION_PATH=annotation file path of your pretrain data
-STAGE1_TRAIN_DATA_IMAGE_FOLDER=image dir path of your pretrain data
-```
-
-3. run pretrain.sh on terminal
-
-```python
-bash ./scripts/train/train_stage1.sh
-```
-
-### 3.2 stage2
-
-1. data prepare
-   the train stage2 annotation file follow the `shareGPT` format like:
-
-```python
-[
-    {
-        "id": 2327515,
-        "image": "gqa/images/2327515.jpg",
-        "conversations": [
-            {
-                "from": "human",
-                "value": "<image>\nAre there scarves or hats that are yellow?\nAnswer the question using a single word or phrase."
-            },
-            {
-                "from": "gpt",
-                "value": "Yes"
-            },
-            {
-                "from": "human",
-                "value": "Does the man wear shorts?"
-            },
-            {
-                "from": "gpt",
-                "value": "No"
-            },
-            ...
-        ]
-    },
-    ...         
-]
-```
-
-2. modify train_stage2.sh
-   modify the train_stage2 bash file: `./scripts/train/train_stage2.sh`:
-
-```python
-STAGE2_TRAIN_ANNOTATION_PATH=annotation file path of your train stage2 data
-STAGE2_TRAIN_DATA_IMAGE_FOLDER=image dir path of your train stage2 data
-```
-
-3. run train_stage2.sh on terminal
-
-```python
-bash ./scripts/train/train_stage2.sh
-```
-
-## 4. Finetune
 
 ### 4.1 Full parameters
 
